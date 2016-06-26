@@ -67,7 +67,7 @@ Construct argument lists and execute
 e.g. echo a b c d e f | xargs -n 3
 echo a b c d e f | xargs -n 3
 
-xargs sets the max number of arugment taken from the input (which is 3) everytime
+xargs sets the max number of arugment taken from the input (which is 3) every time
 
 
 
