@@ -12,7 +12,8 @@ For quick and easy interactive practice with Python, many people enjoy [Codecade
 
 How are Python lists and tuples similar and different? Which will work as keys in dictionaries? Why?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+Tuples are immutable (the values cannot be changed after initial assignment), while lists are mutable. Only immutable elements can be used as dictionary keys, and hence only tuples and not lists can be used as keys. 
+Dicts and sets must use a hash for efficient lookup in a hash table. The hash values must be immutable, because changing the hash will mess up the data structures and cause the dict or set to fail
 
 ---
 
