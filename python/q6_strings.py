@@ -17,8 +17,12 @@ def donuts(count):
     'Number of donuts: many'
     >>> donuts(99)
     'Number of donuts: many'
-    """
-    raise NotImplementedError
+    """    
+    if count >= 10: 
+        count = "more"
+
+    print "Number of donuts: ", count
+    return 
 
 
 def both_ends(s):
@@ -36,8 +40,11 @@ def both_ends(s):
     ''
     >>> both_ends('xyz')
     'xyyz'
-    """
-    raise NotImplementedError
+    """    
+    if len(s)<2:
+        s = ""
+    return s[:2]+s[-2:]
+
 
 
 def fix_start(s):
@@ -56,9 +63,10 @@ def fix_start(s):
     >>> fix_start('donut')
     'donut'
     """
-    raise NotImplementedError
+    return s[0]+"".join(map(lambda x: x if x!=s[0] else "*", s[1:]))
 
-
+    
+    
 def mix_up(a, b):
     """
     Given strings a and b, return a single string with a and b
@@ -74,7 +82,9 @@ def mix_up(a, b):
     >>> mix_up('pezzy', 'firm')
     'fizzy perm'
     """
-    raise NotImplementedError
+    a2=a[0:2]
+    b2=b[0:2]
+    return b2+a[2:]+" "+a2+b[2:]    
 
 
 def verbing(s):
@@ -91,7 +101,12 @@ def verbing(s):
     >>> verbing('do')
     'do'
     """
-    raise NotImplementedError
+    if len(s)>=3:
+        if s[-3:]=="ing":
+            s = s+"ly"
+        else:
+            s=s+"ing"
+    return s
 
 
 def not_bad(s):
@@ -111,7 +126,12 @@ def not_bad(s):
     >>> not_bad("It's bad yet not")
     "It's bad yet not"
     """
-    raise NotImplementedError
+    not_loc = s.find(' not')
+    bad_loc = s.find(' bad')
+    
+    if bad_loc>not_loc:
+        s = s[:not_loc]+" good"
+    return s
 
 
 def front_back(a, b):
@@ -130,4 +150,9 @@ def front_back(a, b):
     >>> front_back('Kitten', 'Donut')
     'KitDontenut'
     """
-    raise NotImplementedError
+    a_front = a[:len(a)/2+len(a)%2]
+    a_back = a[len(a)/2+len(a)%2:]
+    b_front = b[:len(b)/2+len(b)%2]
+    b_back = b[len(b)/2+len(b)%2:]
+   
+    return a_front + b_front + a_back + b_back
