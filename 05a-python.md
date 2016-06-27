@@ -12,7 +12,8 @@ For quick and easy interactive practice with Python, many people enjoy [Codecade
 
 How are Python lists and tuples similar and different? Which will work as keys in dictionaries? Why?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+Tuples are immutable (the values cannot be changed or added after initial assignment), while lists are mutable. Only immutable elements can be used as dictionary keys.
+Dicts and sets must use a hash for efficient lookup in a hash table, because changing the hash will mess up the data structures and cause the dict or set to fail
 
 ---
 
@@ -20,7 +21,10 @@ How are Python lists and tuples similar and different? Which will work as keys i
 
 How are Python lists and sets similar and different? Give examples of using both. How does performance compare between lists and sets for finding an element. Why?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+Both set and list are similar for storing a sequence of items.
+A list is for an ordered collection of items and a set is for an unordered set of items which are not duplicated.
+
+Sets are implemented using hash tables. Whenever you add an object to a set, the position within the memory of the set object is determined using the hash of the object to be added. When testing for membership, all that needs to be done is basically to look if the object is at the position determined by its hash, so the speed of this operation does not depend on the size of the set. For lists, in contrast, the whole list needs to be searched, which will become slower as the list grows.
 
 ---
 
@@ -28,7 +32,10 @@ How are Python lists and sets similar and different? Give examples of using both
 
 Describe Python's `lambda`. What is it, and what is it used for? Give at least one example, including an example of using a `lambda` in the `key` argument to `sorted`.
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+Lamda function is anonymous functions (i.e. functions that are not bound to a name) at runtime used for some simple operations. 
+
+>>> sorted(["hello", "world", "i", "am", "Computer"], key=lambda x: x.lower())
+This sorts out the words in the list according to alphabetical order irrespective of the letter case. 
 
 ---
 
@@ -36,7 +43,19 @@ Describe Python's `lambda`. What is it, and what is it used for? Give at least o
 
 Explain list comprehensions. Give examples and show equivalents with `map` and `filter`. How do their capabilities compare? Also demonstrate set comprehensions and dictionary comprehensions.
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+List comprehensions are a tool for transforming one list into another list. During this transformation, elements can be conditionally included in the new list and each element can be transformed as needed.
+>>> map(lambda x,y:x*y, [1,2,3],[4,5,6])
+map() will apply its lambda function to the elements of the argument lists
+
+>>> filter(lambda x: x>=2, [1,2,3])
+filter will apply its lambda functions to each element of the list and return a list only if each element is True
+
+Set comprehension
+>>> s = { x for x in range(10) }
+
+Dictionary comprehension
+>>> dict([(i, i*i) for i in range(4)])
+
 
 ---
 
@@ -51,7 +70,11 @@ date_start = '01-02-2013'
 date_stop = '07-28-2015'
 ```
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE (answer will be in number of days)
+import datetime
+start = datetime.datetime.strptime(date_start, '%m-%d-%Y')
+end  = datetime.datetime.strptime(date_stop, '%m-%d-%Y')
+delta = end - start
+print delta.days
 
 b.  
 ```
@@ -59,7 +82,11 @@ date_start = '12312013'
 date_stop = '05282015'  
 ```
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE (answer will be in number of days)
+import datetime
+start = datetime.datetime.strptime(date_start, '%m%d%Y')
+end  = datetime.datetime.strptime(date_stop, '%m%d%Y')
+delta = end - start
+print delta.days
 
 c.  
 ```
@@ -67,7 +94,11 @@ date_start = '15-Jan-1994'
 date_stop = '14-Jul-2015'  
 ```
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE  (answer will be in number of days)
+import datetime
+start = datetime.datetime.strptime(date_start, '%d-%b-%Y')
+end  = datetime.datetime.strptime(date_stop, '%d-%b-%Y')
+delta = end - start
+print delta.days
 
 Place code in this file: [q5_datetime.py](python/q5_datetime.py)
 
