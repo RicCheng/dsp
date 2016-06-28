@@ -64,7 +64,12 @@ faculty_dict = { 'Ellenberg': [['Ph.D.', 'Professor', 'sellenbe@upenn.edu'], ['P
 ```
 Print the first 3 key and value pairs of the dictionary:
 
->> REPLACE THIS WITH YOUR RESPONSE
+Putt
+[[' PhD ScD', 'Professor', 'mputt@mail.med.upenn.edu']]
+Feng
+[[' Ph.D', 'Assistant Professor', 'ruifeng@upenn.edu']]
+Bilker
+[['Ph.D.', 'Professor', 'warren@upenn.edu']]
 
 ####Q7.  The previous dictionary does not have the best design for keys.  Create a new dictionary with keys as:
 
@@ -74,11 +79,18 @@ professor_dict = {('Susan', 'Ellenberg'): ['Ph.D.', 'Professor', 'sellenbe@upenn
 
 Print the first 3 key and value pairs of the dictionary:
 
->> REPLACE THIS WITH YOUR RESPONSE
+('A.', 'Localio')
+[' JD MA MPH MS PhD', 'Associate Professor', 'rlocalio@upenn.edu']
+('Alisa', 'Stephens')
+[' Ph.D.', 'Assistant Professor', 'alisaste@mail.med.upenn.edu']
+('Andrea', 'Troxel')
+[' ScD', 'Professor', 'atroxel@mail.med.upenn.edu']
+
 
 ####Q8.  It looks like the current dictionary is printing by first name.  Print out the dictionary key value pairs based on alphabetical orders of the last name of the professors
 
->> REPLACE THIS WITH YOUR RESPONSE
+[('Scarlett', 'Bellamy'), ('Warren', 'Bilker'), ('Matthew', 'Bryan'), ('Jinbo', 'Chen'), ('Jonas', 'Ellenberg'), ('Susan', 'Ellenberg'), ('Rui', 'Feng'), ('Benjamin', 'French'), ('Phyllis', 'Gimotty'), ('Wensheng', 'Guo'), ('Yenchih', 'Hsu'), ('Rebecca', 'Hubbard'), ('Wei-Ting', 'Hwang'), ('Marshall', 'Joffe'), ('J.', 'Landis'), ('Yimei', 'Li'), ('Hongzhe', 'Li'), ('Mingyao', 'Li'), ('A.', 'Localio'), ('Nandita', 'Mitra'), ('Knashawn', 'Morales'), ('Kathleen', 'Propert'), ('Mary', 'Putt'), ('Sarah', 'Ratcliffe'), ('Michelle', 'Ross'), ('Jason', 'Roy'), ('Mary', 'Sammel'), ('Pamela', 'Shaw'), ('Russell', 'Shinohara'), ('Haochang', 'Shou'), ('Justine', 'Shults'), ('Alisa', 'Stephens'), ('Andrea', 'Troxel'), ('Rui', 'Xiao'), ('Sharon', 'Xie'), ('Dawei', 'Xie'), ('Wei', 'Yang')]
+
 
 Place your code in this file: [advanced_python_dict.py](python/advanced_python_dict.py)
 
