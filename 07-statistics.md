@@ -53,11 +53,41 @@ Cohen's D is an example of effect size.  Other examples of effect size are:  cor
 
 You will see effect size again and again in results of algorithms that are run in data science.  For instance, in the bootcamp, when you run a regression analysis, you will recognize the t-statistic as an example of effect size.
 
+    ## Q1 codes
+    import thinkplot
+    import thinkstats2
+    import nsfg
+    
+    preg = nsfg.ReadFemPreg()
+    live = preg[preg.outcome == 1]
+    
+    firsts = live[live.birthord == 1]
+    others = live[live.birthord != 1]
+        
+    firsts_mean = firsts.totalwgt_lb.mean()
+    firsts_std = firsts.totalwgt_lb.std()
+    
+    others_mean = others.totalwgt_lb.mean()
+    others_std = others.totalwgt_lb.std()
+    
+    print "mean",firsts_mean, others_mean
+    print "std", firsts_std, others_std
+    print "Cohen Effect Size", thinkstats2.CohenEffectSize(firsts_wgt.totalwgt_lb, others_wgt.totalwgt_lb)
+
+
+>> The mean weight of firsts babies are lighter than other babies by 0.12 lb. 
+>> Cohen Effect Size is -0.088, which is small
+
 ###Q2. [Think Stats Chapter 3 Exercise 1](statistics/3-1-actual_biased.md) (actual vs. biased)
 This problem presents a robust example of actual vs biased data.  As a data scientist, it will be important to examine not only the data that is available, but also the data that may be missing but highly relevant.  You will see how the absence of this relevant data will bias a dataset, its distribution, and ultimately, its statistical interpretation.
 
+
+
 ###Q3. [Think Stats Chapter 4 Exercise 2](statistics/4-2-random_dist.md) (random distribution)  
 This questions asks you to examine the function that produces random numbers.  Is it really random?  A good way to test that is to examine the pmf and cdf of the list of random numbers and visualize the distribution.  If you're not sure what pmf is, read more about it in Chapter 3.  
+
+>> It is random but follows a uniform distribution 
+
 
 ###Q4. [Think Stats Chapter 5 Exercise 1](statistics/5-1-blue_men.md) (normal distribution of blue men)
 This is a classic example of hypothesis testing using the normal distribution.  The effect size used here is the Z-statistic. 
