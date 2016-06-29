@@ -74,25 +74,79 @@ You will see effect size again and again in results of algorithms that are run i
     print "std", firsts_std, others_std
     print "Cohen Effect Size", thinkstats2.CohenEffectSize(firsts_wgt.totalwgt_lb, others_wgt.totalwgt_lb)
 
-
->> The mean weight of firsts babies are lighter than other babies by 0.12 lb. 
->> Cohen Effect Size is -0.088, which is small
+    ### comment The mean weight of firsts babies are lighter than other babies by 0.12 lb. 
+    ### Cohen Effect Size is -0.088, which is small
 
 ###Q2. [Think Stats Chapter 3 Exercise 1](statistics/3-1-actual_biased.md) (actual vs. biased)
 This problem presents a robust example of actual vs biased data.  As a data scientist, it will be important to examine not only the data that is available, but also the data that may be missing but highly relevant.  You will see how the absence of this relevant data will bias a dataset, its distribution, and ultimately, its statistical interpretation.
 
-
-
+    ### Q2
+    %matplotlib inline
+    def BiasPmf(pmf, label):
+        new_pmf = pmf.Copy(label=label)
+    
+        for x, p in pmf.Items():
+            new_pmf.Mult(x, x)
+            
+        new_pmf.Normalize()
+        return new_pmf
+    
+    
+    import chap01soln
+    resp = chap01soln.ReadFemResp()
+    
+    actual_pmf = thinkstats2.Pmf(resp.numkdhh, label='actual')
+    print('actual mean', actual_pmf.Mean())
+    
+    observed_pmf = BiasPmf(actual_pmf, label='observed')
+    print('observed mean', observed_pmf.Mean())
+    
+    thinkplot.PrePlot(2)
+    thinkplot.Pmfs([actual_pmf, observed_pmf])
+    thinkplot.Show(xlabel='No. of children under 18', ylabel='PMF')
+    
 ###Q3. [Think Stats Chapter 4 Exercise 2](statistics/4-2-random_dist.md) (random distribution)  
 This questions asks you to examine the function that produces random numbers.  Is it really random?  A good way to test that is to examine the pmf and cdf of the list of random numbers and visualize the distribution.  If you're not sure what pmf is, read more about it in Chapter 3.  
 
->> It is random but follows a uniform distribution 
+```python    
+### Q3 codes 
+random_sample = np.random.random(1000)
+random_pmf = thinkstats2.Pmf(random_sample, label='PMF')
+random_cdf = thinkstats2.Cdf(random_sample, label='CDF')
 
+print 'mean', random_sample.mean()
+print 'sd', random_sample.std()
+
+thinkplot.Pmf(random_pmf)
+thinkplot.Show(xlabel='weight', ylabel='PMF', xlim=[0,1], ylim=[0,1])
+
+thinkplot.Cdf(random_cdf)
+thinkplot.Show(xlabel='percentile rank', ylabel='CDF', xlim=[0,1], ylim=[0,1])
+
+import scipy.stats ## compared to a uniform distribution
+scipy.stats.norm.cdf(0)
+### It is random but follows a uniform distribution 
+```
 
 ###Q4. [Think Stats Chapter 5 Exercise 1](statistics/5-1-blue_men.md) (normal distribution of blue men)
 This is a classic example of hypothesis testing using the normal distribution.  The effect size used here is the Z-statistic. 
 
+```python 
+### Q4 codes
 
+import scipy.stats
+
+mu = 178
+sigma = 7.7
+dist = scipy.stats.norm(loc=mu, scale=sigma)
+
+#5'10 = 177.8cm 
+#6'1 = 185.4cm
+
+dist.cdf(185.4)-dist.cdf(177.8)
+
+# 34.2% of male population falls between 5'10 and 6'1
+```
 
 ###Q5. Bayesian (Elvis Presley twin) 
 
